@@ -1,4 +1,3 @@
-const drinks = require("../models/drinks");
 const Drinks = require("../models/drinks")
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");

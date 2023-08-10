@@ -13,8 +13,8 @@ const DrinksSchema = new Schema({
 	ablaufdatum:{ type: Date, optional: true},
 });
 
-DrinksSchema.virtual("ablaufdatum_formatted").get(function () {
-    return this.ablaufdatum_formatted ? DateTime.fromJSDate(this.ablaufdatum_formatted).toLocaleString(DateTime.DATE_MED) : '';
+DrinksSchema.virtual("ablaufdatumFormatted").get(function () {
+    return this.ablaufdatum ? DateTime.fromJSDate(this.ablaufdatum).toFormat('dd. MMM yyyy') : '';
   });
 
 // Compile model from schema
