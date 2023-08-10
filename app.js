@@ -5,12 +5,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
 const mongoDB = "mongodb+srv://janruegge:0fjwHTKEltaOFZjf@cluster0.veoyptt.mongodb.net/Inventory_WZB?retryWrites=true&w=majority";
-
+const { body, validationResult } = require("express-validator");
 
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const getraenkeRouter = require('./routes/getraenke');
+const drinksRouter = require('./routes/drinks');
+const drinks = require('./models/drinks');
 
 
 
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/getraenke', getraenkeRouter);
+app.use('/drinks', drinksRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

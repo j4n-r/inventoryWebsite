@@ -1,0 +1,50 @@
+extends layout
+
+block content 
+    h1 #{title}
+    
+    form(method='POST' action='')
+        //- div.form-group
+        //-     label(for='marke') Drink: 
+        //-     input#marke.form-control(type='text', placeholder='Firtz-Cola, Fritz-Limo etc.' marke='marke' value=(undefined===drink ? '' : drink.marke))
+        //- button.btn.btn-primary(type='submit') Submit 
+
+        
+        div.form-group
+            label(for='marke') Marke:
+        input#marke.form-control(type='text', name='marke', placeholder='Fritz-Limo')
+
+        div.form-group
+            label(for='name') Name:
+            input#name.form-control(type='text', name='name', placeholder='Zitrone')
+
+        div.form-group
+            label(for='alkoholisch') Alkoholisch:
+            input#alkoholisch.form-control(type='checkbox', name='alkoholisch')
+
+        div.form-group
+            label(for='einkaufspreis') Einkaufspreis:
+            input#einkaufspreis.form-control(type='number', name='einkaufspreis', step='0.01')
+
+        div.form-group
+            label(for='verkaufspreis') Verkaufspreis:
+            input#verkaufspreis.form-control(type='number', name='verkaufspreis', step='0.01')
+
+        div.form-group
+            label(for='vorhandene_menge') Vorhandene Menge:
+            input#vorhandene_menge.form-control(type='number', name='vorhandene_menge')
+
+        div.form-group
+            label(for='verkaufte_menge') Verkaufte Menge:
+            input#verkaufte_menge.form-control(type='number', name='verkaufte_menge')
+
+        div.form-group
+            label(for='ablaufdatum') Ablaufdatum:
+            input#ablaufdatum.form-control(type='date', name='ablaufdatum')
+
+        button.btn.btn-primary(type='submit') Submit
+
+
+                
+
+                    

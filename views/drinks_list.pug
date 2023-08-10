@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p #{title} Liste
+  ul
+    each drink in drinks
+      li
+        | Marke: #{drink.marke}
+        br
+        | Name: #{drink.name}
+        // Weitere Informationen zum Getränk ausgeben...
