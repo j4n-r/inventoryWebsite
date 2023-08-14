@@ -2,6 +2,7 @@ const Drinks = require("../models/drinks")
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
+//render drinks List
 exports.index = asyncHandler(async (req, res, next) => {
   const allDrinks = await Drinks.find()
   res.render('drinks_list', {
@@ -10,6 +11,27 @@ exports.index = asyncHandler(async (req, res, next) => {
   })
   console.log(allDrinks)
 });
+
+//display a drinks details
+exports.drink_detail = asyncHandler(async (req, res, next) => {
+  const drink_detail = await (
+    Drinks.findById(req.params.id)
+    .exec()
+  );
+  if (drink_detail === null) {
+    // No results.
+    const err = new Error("drink not found");
+    err.status = 404;
+    return next(err);
+  }
+  console.log(drink_detail)
+  
+  res.render("drink_detail", {
+    title: "Drink Details",
+    drink: drink_detail, 
+  })
+})
+
 
 //add drinks
 exports.drinks_add_get = (req, res, next) => {
@@ -26,9 +48,10 @@ exports.drinks_add_post = [
   body("vorhandene_menge").trim().escape(),
   body("verkaufte_menge").trim().escape(),
   body("ablaufdatum").trim().escape(),
+  body("img_url"),
 
   //Extract the validation errors from a request.
- asyncHandler(async (req, res, next) => {
+  asyncHandler(async (req, res, next) => {
 
   const alkoholisch = req.body.alkoholisch === 'on'; // Konvertiere 'on' in true, sonst false
 
@@ -43,20 +66,37 @@ exports.drinks_add_post = [
     vorhandene_menge: req.body.vorhandene_menge,
     verkaufte_menge: req.body.verkaufte_menge,
     ablaufdatum: req.body.ablaufdatum,
+    img_url: req.body.img_url,
 
   });
-
-
   // Data from form is valid.
   // cchck if Drink already exists
   const drinkExists = await Drinks.findOne({name: req.body.name}).exec();
   if (drinkExists) {
        // drink exists, redirect to all drins page
-    res.redirect('drinks')
+    res.redirect('../error')
   } else {
     await drink.save() ;
-    console.log(drink)
     res.redirect('/drinks')
   }
 }) 
 ]
+
+
+//delete drink
+
+exports.drink_delete = asyncHandler(async (req, res, next) => {
+  await Drinks.findByIdAndRemove(req.body.id);
+  res.redirect("/drinks")
+});
+
+
+// update drink
+
+exports.drink_update_get = asyncHandler(async(req, res, next)  => {
+  res.render('drink_update', { title: 'Update' });
+});
+
+exports.drink_update_post = asyncHandler(async(req, res, next)  => {
+  res.render('drink_update', { title: 'Update' });
+});

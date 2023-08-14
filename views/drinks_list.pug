@@ -1,12 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p #{title} Liste
+  h1= title 
+  a(href="/drinks/add") 
+    button(type="button") Add a drink
   ul
     each drink in drinks
-      li
-        | Marke: #{drink.marke}
+      p
+        img(src= drink.img_url alt='drink_image' style='width:100px; height:auto;')
+        p
+        a(href=drink.url) Marke: #{drink.marke}
         br
         | Name: #{drink.name}
         br
@@ -16,7 +19,7 @@ block content
         br
         | Menge: #{drink.vorhandene_menge}
         br
-        | Name: #{drink.ablaufdatumFormatted} 
+        | Ablaufdatum: #{drink.ablaufdatumFormatted} 
       p
         
         

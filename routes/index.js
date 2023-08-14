@@ -6,4 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+//error
+router.get('/error', function(req, res, next) {
+  res.render('error', { title: 'Error' });
+});
+
 module.exports = router;

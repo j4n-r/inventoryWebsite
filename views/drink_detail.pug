@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    h1= title
+    p
+        img(src= drink.img_url alt='drink_image' style='width:100px; height:auto;')
+        p
+        | Marke: #{drink.marke} 
+        br
+        | Name: #{drink.name}
+        br
+        | Alkolisch #{drink.alkoholisch}
+        br
+        | Name: #{drink.verkaufspreis} 
+        br
+        | Preis: #{drink.verkaufspreis}
+        br
+        | Menge: #{drink.vorhandene_menge}
+        br
+        | Verkaufte menge: #{drink.verkaufte_menge} 
+        br
+        | Ablaufdatum: #{drink.ablaufdatumFormatted} 
+        p
+        
+    form(method='POST' action='')
+        div.form-group
+            input#id.form-control(type='hidden',name='id', required='true', value=drink._id )
+
+        button.btn.btn-primary(type='submit') Delete
+    p
+    a(href=drink.id + '/update')
+        button(type="button") Update
+        
+        
+
+
+        // Weitere Informationen zum Getränk ausgeben...
