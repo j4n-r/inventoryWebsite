@@ -1,28 +1,26 @@
 extends layout
 
+  
 block content
-  h1= title 
-  a(href="/drinks/add") 
-    button(type="button") Add a drink
-  ul
+  link(rel='stylesheet', href='/stylesheets/drinks_list.css')
+  .list-wrapper
     each drink in drinks
-      p
-        img(src= drink.img_url alt='drink_image' style='width:100px; height:auto;')
-        p
-        a(href=drink.url) Marke: #{drink.marke}
-        br
-        | Name: #{drink.name}
-        br
-        | Alkolisch #{drink.alkoholisch}
-        br
-        | Preis: #{drink.verkaufspreis}
-        br
-        | Menge: #{drink.vorhandene_menge}
-        br
-        | Ablaufdatum: #{drink.ablaufdatumFormatted} 
-      p
+      a(href=drink.url)
+        div
+          p
+          img(src= drink.img_url alt='drink_image' style='width:100px; height:auto;')
+          p
+          | Marke: #{drink.marke}
+          br
+          | Name: #{drink.name}
+          br
+          | Alkolisch #{drink.alkoholisch}
+          br
+          | Preis: #{drink.verkaufspreis}
+          br
+          | Menge: #{drink.vorhandene_menge}
+          br
+          | Ablaufdatum: #{drink.ablaufdatumFormatted} 
+          p
         
         
-
-
-        // Weitere Informationen zum Getränk ausgeben...

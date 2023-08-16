@@ -9,7 +9,6 @@ exports.index = asyncHandler(async (req, res, next) => {
     title: "Getränke", 
     drinks: allDrinks,
   })
-  console.log(allDrinks)
 });
 
 //display a drinks details
@@ -27,7 +26,7 @@ exports.drink_detail = asyncHandler(async (req, res, next) => {
   console.log(drink_detail)
   
   res.render("drink_detail", {
-    title: "Drink Details",
+    title: "Getränke",
     drink: drink_detail, 
   })
 })
@@ -35,7 +34,7 @@ exports.drink_detail = asyncHandler(async (req, res, next) => {
 
 //add drinks
 exports.drinks_add_get = (req, res, next) => {
-  res.render("addDrinks_form", {title: "Add Drinks"});
+  res.render("addDrinks_form", {title: "Getränke"});
 };
 
 exports.drinks_add_post = [
@@ -56,7 +55,7 @@ exports.drinks_add_post = [
   const alkoholisch = req.body.alkoholisch === 'on'; // Konvertiere 'on' in true, sonst false
 
   const erros = validationResult(req);
-// creatre new drink (kein plan ob Drink oder Drinks)
+  // creatre new drink (kein plan ob Drink oder Drinks)
   const drink = new Drinks({
     marke: req.body.marke,
     name: req.body.name,

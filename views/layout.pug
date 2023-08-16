@@ -4,4 +4,11 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-  block content
+    .container
+      .header #{title}
+      .sidebar 
+        a(href="/drinks") All Drinks
+        p 
+        a(href="/drinks/add") Add Drink
+      .content
+        block content
