@@ -132,7 +132,6 @@ exports.drink_update_post = [
     throw new err(
     res.redirect("/error")
   )} else {
-    alert("Succesfully Updated")
     res.redirect(`/drinks/${req.params.id}`)
   }
 })
