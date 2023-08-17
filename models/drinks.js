@@ -18,6 +18,10 @@ DrinksSchema.virtual("ablaufdatumFormatted").get(function () {
     return this.ablaufdatum ? DateTime.fromJSDate(this.ablaufdatum).toFormat('dd. MMM yyyy') : '';
   });
 
+  DrinksSchema.virtual("ablaufdatumInputFormat").get(function () {
+    return this.ablaufdatum ? DateTime.fromJSDate(this.ablaufdatum).toISODate() : '';
+  });
+
   DrinksSchema.virtual("url").get(function () {
 	return "/drinks/" + this._id;s
   });

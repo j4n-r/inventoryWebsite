@@ -1,4 +1,51 @@
 extends layout
 
+
+
 block content 
-    h1= title
+    link(rel='stylesheet', href='/stylesheets/add_drinks.css')
+    h1 Update:  #{drink.marke} #{drink.name}
+    
+    form(method='POST' action='')
+        .form-wrapper
+            div.form-group
+                label(for='marke') Marke:
+                input#marke.form-control(type='text', name='marke', value= drink.marke)
+
+            div.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', name='name', value = drink.name)
+
+            div.form-group
+                label(for='alkoholisch') Alkoholisch:
+                input#alkoholisch.form-control(type='checkbox', name='alkoholisch' checked=drink.alkoholisch)
+
+            div.form-group
+                label(for='einkaufspreis') Einkaufspreis:
+                input#einkaufspreis.form-control(type='number', name='einkaufspreis', step='0.01', value= drink.einkaufspreis)
+
+            div.form-group
+                label(for='verkaufspreis') Verkaufspreis:
+                input#verkaufspreis.form-control(type='number', name='verkaufspreis', step='0.01', value = drink.verkaufspreis)
+
+            div.form-group
+                label(for='vorhandene_menge') Vorhandene Menge:
+                input#vorhandene_menge.form-control(type='number', name='vorhandene_menge', value= drink.vorhandene_menge)
+
+            div.form-group
+                label(for='verkaufte_menge') Verkaufte Menge:
+                input#verkaufte_menge.form-control(type='number', name='verkaufte_menge', value= drink.verkaufte_menge)
+
+            div.form-group
+            
+                label(for='ablaufdatum') Ablaufdatum:
+                input#ablaufdatum.form-control(type='date', name='ablaufdatum', value= drink.ablaufdatumInputFormat)
+
+            div.form-group
+                label(for='img_url') Bild URL:
+                input#img_url.form-control(type='text', name='img_url', value= drink.img_url)
+
+            button.btn.btn-primary(type='submit') Update
+
+
+    

@@ -90,12 +90,51 @@ exports.drink_delete = asyncHandler(async (req, res, next) => {
 });
 
 
-// update drink
-
+//update
 exports.drink_update_get = asyncHandler(async(req, res, next)  => {
-  res.render('drink_update', { title: 'Update' });
+  const drink_detail = await (
+    Drinks.findById(req.params.id)
+    .exec())
+  res.render('drink_update', { 
+    title: 'Update',
+    drink: drink_detail
+  });
 });
 
-exports.drink_update_post = asyncHandler(async(req, res, next)  => {
-  res.render('drink_update', { title: 'Update' });
-});
+exports.drink_update_post = [
+  body("marke").trim().escape(),
+  body("name").trim().escape(),
+  body("alkoholisch").trim().escape(),
+  body("einkaufspreis").trim().escape(),
+  body("verkaufspreis").trim().escape(),
+  body("vorhandene_menge").trim().escape(),
+  body("verkaufte_menge").trim().escape(),
+  body("ablaufdatum").trim().escape(),
+  body("img_url"),
+
+  asyncHandler(async(req, res, next)  => {
+  const alkoholisch = req.body.alkoholisch === 'on'; // Konvertiere 'on' in true, sonst false
+ 
+  const updated_drink = {
+    marke: req.body.marke,
+    name: req.body.name,
+    alkoholisch: alkoholisch,
+    einkaufspreis: req.body.einkaufspreis,
+    verkaufspreis: req.body.verkaufspreis,
+    vorhandene_menge: req.body.vorhandene_menge,
+    verkaufte_menge: req.body.verkaufte_menge,
+    ablaufdatum: req.body.ablaufdatum,
+    img_url: req.body.img_url,
+  }
+
+  const update_drink = Drinks.findByIdAndUpdate(req.params.id,{$set: updated_drink}).exec() 
+  if (update_drink === null){
+    throw new err(
+    res.redirect("/error")
+  )} else {
+    alert("Succesfully Updated")
+    res.redirect(`/drinks/${req.params.id}`)
+  }
+})
+]
+
