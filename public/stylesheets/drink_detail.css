@@ -1,0 +1,12 @@
+.button_container {
+    display: flex;
+    
+}
+
+button {
+    margin: 4px;
+}
+
+.btn-primary {
+    margin-right: 15px;
+}

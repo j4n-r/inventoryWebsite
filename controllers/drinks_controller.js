@@ -11,6 +11,33 @@ exports.index = asyncHandler(async (req, res, next) => {
   })
 });
 
+// add inventory through drink list 
+
+exports.addOneToInv = asyncHandler(async (req, res, next) => {
+  const addOneToInv = await Drinks.findByIdAndUpdate(req.body.btn_add,{$inc: {vorhandene_menge: 1 }}).exec()
+  
+  if (addOneToInv === null) {
+    // No results.
+    const err = new Error("drink not found");
+    err.status = 404;
+    return next(err);
+  }
+  res.redirect('/drinks')
+})
+exports.subtractOneFromInv = asyncHandler(async (req, res, next) => {
+  const substractOneFromInv = await Drinks.findByIdAndUpdate(req.body.btn_subtract,{$inc: {vorhandene_menge: -1 }}).exec()
+  
+  if (substractOneFromInv === null) {
+    // No results.
+    const err = new Error("drink not found");
+    err.status = 404;
+    return next(err);
+  }
+  res.redirect('/drinks')
+})
+
+
+
 //display a drinks details
 exports.drink_detail = asyncHandler(async (req, res, next) => {
   const drink_detail = await (

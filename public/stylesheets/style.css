@@ -12,12 +12,12 @@ a:link {
   
 }
 a:hover {
-  color: blue;
+ font-weight: 600;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 3fr ;
+  grid-template-columns: 1fr 5fr;
   grid-template-rows: 10%;
   gap: 20px;
 }
@@ -32,6 +32,10 @@ a:hover {
 .sidebar {
   grid-row: 2/ 3;
   padding-top: 20px;
+  font-size: 120%;
+  font-weight:500;
+  
+
 }
 
 .content {

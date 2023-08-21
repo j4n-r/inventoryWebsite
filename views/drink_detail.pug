@@ -1,9 +1,10 @@
 extends layout
 
 block content
+    link(rel='stylesheet', href='/stylesheets/drink_detail.css')
     h1 Drink Details  #{message}
-    p
-        img(src= drink.img_url alt='drink_image' style='width:100px; height:auto;')
+    .detail_container
+        img(src= drink.img_url alt='drink_image' style='width:250px; height:auto;')
         p
         | Marke: #{drink.marke} 
         br
@@ -21,17 +22,17 @@ block content
         br
         | Ablaufdatum: #{drink.ablaufdatumFormatted} 
         p
-        
-    form(method='POST' action='')
-        div.form-group
-            input#id.form-control(type='hidden',name='id', required='true', value=drink._id )
+        .button_container
+            form(method='POST' action='')
+                div.form-group
+                    input#id.form-control(type='hidden',name='id', required='true', value=drink._id )
 
-        button.btn.btn-primary(type='submit') Delete
-    p
-    a(href=drink.id + '/update')
-        button(type="button") Update
-        
-        
+                button.btn.btn-primary(type='submit') Delete
+            p
+            a(href=drink.id + '/update')
+                button.btn(type="button") Update
+                
+            
 
 
-        // Weitere Informationen zum Getränk ausgeben...
+            // Weitere Informationen zum Getränk ausgeben...

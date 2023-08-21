@@ -5,10 +5,10 @@ block content
   link(rel='stylesheet', href='/stylesheets/drinks_list.css')
   .list-wrapper
     each drink in drinks
-      a(href=drink.url)
-        div
+      div
+        a(href=drink.url)
           p
-          img(src= drink.img_url alt='drink_image' style='width:100px; height:auto;')
+          img(src= drink.img_url alt='drink_image' style='width:200px; height:auto;')
           p
           | Marke: #{drink.marke}
           br
@@ -22,5 +22,10 @@ block content
           br
           | Ablaufdatum: #{drink.ablaufdatumFormatted} 
           p
-        
+        form(method='POST' action='')
+          .adjust_inv
+            button.btn(type='submit' name='btn_subtract' value=drink.id formaction='/drinks/subtractOne') -   
+            p #{drink.vorhandene_menge}
+            button.btn(type='submit' name='btn_add' value=drink.id formaction='drinks//addOne') +
+
         
