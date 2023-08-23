@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+
+    form(method="POST" action="") 
+        .form-wrapper
+            p
+                p Name:    
+                input(type='text', name='name', placeholder='Name')
+                p E-mail:   
+                input(type='text', name='password', placeholder='Password')
+                p  Username: 
+                input(type='text', name='name', placeholder='Username / E-mail')
+                p Password:    
+                input(type='text', name='password', placeholder='Password')
+                p Confirm Password: 
+                input(type='text', name='confirmPassword', placeholder='confirm password')
+            input(type='submit', value='Login')

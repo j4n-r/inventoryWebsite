@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+
+    form(method="POST" action="") 
+        .form-wrapper
+            p
+                |  User:      
+                input(type='text', name='name', placeholder='Username / E-mail')
+                |  Password:    
+                input(type='text', name='password', placeholder='Password')
+            input(type='submit', value='Login')

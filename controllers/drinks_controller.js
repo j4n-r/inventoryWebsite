@@ -2,6 +2,7 @@ const Drinks = require("../models/drinks")
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
+
 //render drinks List
 exports.index = asyncHandler(async (req, res, next) => {
   const allDrinks = await Drinks.find()

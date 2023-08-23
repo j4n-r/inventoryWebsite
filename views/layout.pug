@@ -6,7 +6,12 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .container
-      .header #{title}
+      .header_wrapper
+        .header #{title}
+        .login 
+          a(href="/user/login") Login &#32; &#32; 
+          a.register(href="/user/register") Register
+          
       .sidebar 
         a(href="/drinks") All Drinks
         p 

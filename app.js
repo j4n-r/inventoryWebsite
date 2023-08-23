@@ -1,17 +1,23 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+require('dotenv').config()
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
-const mongoDB = "mongodb+srv://janruegge:0fjwHTKEltaOFZjf@cluster0.veoyptt.mongodb.net/Inventory_WZB?retryWrites=true&w=majority";
+const mongoDB = process.env.mongoDB_URL
 const { body, validationResult } = require("express-validator");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require('bcryptjs');
 
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/user');
 const drinksRouter = require('./routes/drinks');
 const drinks = require('./models/drinks');
+const userRouter = require('./routes/user')
 
 
 
@@ -30,6 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/user', userRouter)
 app.use('/users', usersRouter);
 app.use('/drinks', drinksRouter);
 
