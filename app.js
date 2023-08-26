@@ -13,6 +13,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require('bcryptjs');
 
 
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const drinksRouter = require('./routes/drinks');
@@ -23,6 +24,8 @@ const userRouter = require('./routes/user')
 
 
 const app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +58,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {title: "Error"});
 });
+
+
 
 module.exports = app;
 
