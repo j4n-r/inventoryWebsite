@@ -8,10 +8,12 @@ const mongoose = require("mongoose");
 const mongoDB = process.env.mongoDB_URL
 const { body, validationResult } = require("express-validator");
 const session = require("express-session");
-const passport = require("passport");
+// const passport = require("../config/passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require('bcryptjs');
 
+// const initializePassport = require('/config/passport')
+// initializePassport(passport)
 
 
 const indexRouter = require('./routes/index');
@@ -59,6 +61,11 @@ app.use(function(err, req, res, next) {
   res.render('error', {title: "Error"});
 });
 
+
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+// app.use(passport.initialize());
+// app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
 
 module.exports = app;

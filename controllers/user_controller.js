@@ -2,13 +2,19 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const User = require("../models/users.js")
 const bcrypt = require('bcryptjs');
+const passport = require("passport")
+const LocalStrategy = require("passport-local")
 
 
 exports.login_get = (req, res, next) => {
     res.render('login', { title: 'Login' });
   }
 
-
+exports.login_post = ( "/log-in",
+passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/drinks"
+}))
 
 
 exports.register_get = (req, res, next) => {
