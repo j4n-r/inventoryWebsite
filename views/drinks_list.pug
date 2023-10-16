@@ -9,23 +9,12 @@ block content
         a(href=drink.url)
           p
           img(src= drink.img_url alt='drink_image' style='width:200px; height:auto;')
-          p
-          | Marke: #{drink.marke}
-          br
-          | Name: #{drink.name}
-          br
-          | Alkolisch #{drink.alkoholisch}
-          br
-          | Preis: #{drink.verkaufspreis}
-          br
-          | Menge: #{drink.vorhandene_menge}
-          br
-          | Ablaufdatum: #{drink.ablaufdatumFormatted} 
-          p
+          p.drinkName #{drink.marke} - #{drink.name}
+
         form(method='POST' action='')
           .adjust_inv
             button.btn(type='submit' name='btn_subtract' value=drink.id formaction='/drinks/subtractOne') -   
-            p #{drink.vorhandene_menge}
+            p.menge #{drink.vorhandene_menge}
             button.btn(type='submit' name='btn_add' value=drink.id formaction='drinks//addOne') +
 
         
