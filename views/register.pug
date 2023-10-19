@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/signUp.css')
+  form(action='/user/register', method='POST')
+    .form-group
+      label(for='username') Username
+      input#exampleInputName.form-control(type='text' name='username' placeholder='Enter Username')
+    .form-group
+      label(for='email') Email address
+      input#exampleInputEmail1.form-control(type='email' name='email' aria-describedby='emailHelp' placeholder='Enter email')
+      small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+    .form-group
+      label(for='password') Password
+      input#exampleInputPassword1.form-control(type='password' name='password' placeholder='Password')
+      small#emailHelp.form-text.text-muted Don't share your password with anyone.
+    .form-group.form-check
+    button.btn.btn-primary(type='submit') Submit
+    a(href="../drinks")
+      button.btn(type='button') Cancel

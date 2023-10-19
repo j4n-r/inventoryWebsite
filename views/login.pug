@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  link(rel='stylesheet', href='/stylesheets/signUp.css')
+  form
+    .form-group
+      label(for='exampleInputEmail1') Email address
+      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email')
+    .form-group
+      label(for='exampleInputPassword1') Password
+      input#exampleInputPassword1.form-control(type='password' placeholder='Password')
+    .form-group.form-check
+    button.btn.btn-primary(type='submit') Submit
+    a(href="../drinks")
+      button.btn(type='button') Cancel
