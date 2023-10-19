@@ -4,8 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
+require('dotenv').config();
 const mongoDB = "mongodb+srv://janruegge:0fjwHTKEltaOFZjf@cluster0.veoyptt.mongodb.net/Inventory_WZB?retryWrites=true&w=majority";
+const jwt = require('jsonwebtoken');
+const secretkey = process.env.JWT_SECRET_KEY
 const passport = require("passport")
+
+
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
