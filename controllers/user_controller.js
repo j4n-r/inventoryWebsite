@@ -9,7 +9,4 @@ const User = require('../models/user');
 //   }; 
 
 
-exports.login_get = (req, res, next) => {
-    res.render("login", {title: "Login"})
-}
 
