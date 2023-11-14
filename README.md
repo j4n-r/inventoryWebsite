@@ -9,9 +9,9 @@ Login is working but no implemented in frontend. You will only get a JSON.
 
 ### Start the website
  
--> git clone {project URL}
--> put your Database URL in .env file
--> npm install
--> node bin/www
+1. git clone {project URL}
+2. put your Database URL in .env file
+3. npm install
+4. node bin/www
 
 That should should do it if you have nodeJS installed. 
