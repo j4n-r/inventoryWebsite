@@ -2,10 +2,10 @@
 ### Stack used 
 Website build with NodeJS Express and MongoDB. 
 
-Frontend could be prettier started with only css and then added Bootstrap 
+Frontend could be prettier, started with only css and then added Bootstrap 
 
 JSON Web Token Login/Register.
-Login is working but no implemented in frontend. You will only get a JSON. 
+Login is working but not implemented in frontend. You will only get a JSON response. 
 
 ### Start the website
  
